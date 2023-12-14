@@ -1,7 +1,6 @@
 package hexlet.code.games;
 
-import java.util.Random;
-
+import static hexlet.code.Engine.getRandomNumberBetween;
 import static hexlet.code.Engine.runGame;
 
 public class Calc {
@@ -39,10 +38,15 @@ public class Calc {
     }
 
     private static String generateQuestion() {
+        final int minValueOperand = 1;
+        final int maxValueOperand = 10;
+        final int maxValueOperation = 3;
 
-        setOperand1(new Random().nextInt(10 + 1));
-        setOperand2(new Random().nextInt(10 + 1));
-        switch (new Random().nextInt(3 - 1 + 1) + 1) {
+
+
+        setOperand1(getRandomNumberBetween(minValueOperand, maxValueOperand));
+        setOperand2(getRandomNumberBetween(minValueOperand, maxValueOperand));
+        switch (getRandomNumberBetween(minValueOperand, maxValueOperation)) {
             case 1:
                 setOperation("+");
                 break;

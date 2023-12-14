@@ -7,3 +7,5 @@ Please find video 6 step [here.](https://asciinema.org/a/zCETxc0I79SBpq8xRzXIFXX
 Please find video 7 step [here.](https://asciinema.org/a/xxM7KeY97qMwp3OxxTqhBWhrr)
 
 Please find video 8 step [here.](https://asciinema.org/a/jCkfgHvKmvrQvMTdSphvqnlxM)
+
+Please find video 9 step [here.](https://asciinema.org/a/If3wulHroT7F2hi3eU4wpzA0F)

@@ -1,5 +1,6 @@
 package hexlet.code;
 
+import java.util.Random;
 import java.util.Scanner;
 
 import static hexlet.code.Cli.greetUser;
@@ -52,5 +53,9 @@ public class Engine {
 
     public static void congratulate() {
         System.out.println("Congratulations, " + Cli.getUserName());
+    }
+
+    public static int getRandomNumberBetween(int minNumber, int maxNumber) {
+        return new Random().nextInt(maxNumber - minNumber + 1) + minNumber;
     }
 }

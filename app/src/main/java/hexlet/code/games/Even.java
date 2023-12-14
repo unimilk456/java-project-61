@@ -1,5 +1,6 @@
 package hexlet.code.games;
 
+import static hexlet.code.Engine.getRandomNumberBetween;
 import static hexlet.code.Engine.runGame;
 
 public class Even {
@@ -18,7 +19,9 @@ public class Even {
     }
 
     private static String getQuestion() {
-        return String.valueOf((int) (Math.floor(Math.random() * 100) + 1));
+        final int minNumber = 1;
+        final int maxNumber = 100;
+        return String.valueOf(getRandomNumberBetween(minNumber, maxNumber));
     }
 
     private static String getAnswer(String question) {

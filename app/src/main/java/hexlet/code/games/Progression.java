@@ -1,7 +1,6 @@
 package hexlet.code.games;
 
-import java.util.Random;
-
+import static hexlet.code.Engine.getRandomNumberBetween;
 import static hexlet.code.Engine.runGame;
 
 public class Progression {
@@ -27,13 +26,24 @@ public class Progression {
         runGame(TASK_DESCRIPTION, questionsAndAnswers);
     }
     private static String generateQuestion() {
-//        random.nextInt(max - min + 1) + min
-        int countNumber = new Random().nextInt(10 - 5 + 1) + 5;
-        int positionForEllipses = new Random().nextInt(countNumber - 2 + 1) + 2;
-        int startNumber = new Random().nextInt(20 - 1 + 1) + 1;
-        int increment = new Random().nextInt(20 - 1 + 1) + 1;
+        final int maxNumberInProgression = 10;
+        final int minNumberInProgression = 5;
+
+        final int minPositionForEllipses = 2;
+
+        final int minStartNumberProgression = 1;
+        final int maxStartNumberProgression = 20;
+
+        final int minIncrement = 1;
+        final int maxIncrement = 20;
+
+        int countNumberInProgression = getRandomNumberBetween(minNumberInProgression, maxNumberInProgression);
+        int positionForEllipses = getRandomNumberBetween(minPositionForEllipses, countNumberInProgression);
+        int startNumber = getRandomNumberBetween(minStartNumberProgression, maxStartNumberProgression);
+        int increment = getRandomNumberBetween(minIncrement, maxIncrement);
+
         String result = startNumber + " ";
-        for (int i = 1; i <= countNumber; i++) {
+        for (int i = 1; i <= countNumberInProgression; i++) {
             if (i == (positionForEllipses - 1)) {
                 result += ".. ";
                 startNumber += increment;

@@ -5,6 +5,7 @@ import static hexlet.code.Cli.greetUser;
 import static hexlet.code.games.Calc.generateQuestionsAndAnswersCalcGame;
 import static hexlet.code.games.Even.generateQuestionsAndAnswersEven;
 import static hexlet.code.games.MaxDivisor.generateQuestionsAndAnswersMaxDivisor;
+import static hexlet.code.games.Prime.generateQuestionsAndAnswersPrime;
 import static hexlet.code.games.Progression.generateQuestionsAndAnswersProgression;
 
 public class App {
@@ -16,6 +17,7 @@ public class App {
                 3 - Calc
                 4 - GCD
                 5 - Progression
+                6 - Prime
                 0 - Exit
                 Your choice:""");
         Scanner scanner = new Scanner(System.in);
@@ -24,6 +26,7 @@ public class App {
         switch (gameNumber) {
             case 0:
                 System.out.println("Bye!");
+                break;
             case 1:
                 greetUser();
                 break;
@@ -38,6 +41,9 @@ public class App {
                 break;
             case 5:
                 generateQuestionsAndAnswersProgression();
+                break;
+            case 6:
+                generateQuestionsAndAnswersPrime();
                 break;
             default:
         }

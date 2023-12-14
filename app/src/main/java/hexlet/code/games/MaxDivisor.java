@@ -1,7 +1,6 @@
 package hexlet.code.games;
 
-import java.util.Random;
-
+import static hexlet.code.Engine.getRandomNumberBetween;
 import static hexlet.code.Engine.runGame;
 
 public class MaxDivisor {
@@ -36,9 +35,11 @@ public class MaxDivisor {
         runGame(TASK_DESCRIPTION, questionsAndAnswers);
     }
     private static String generateQuestion() {
-//        random.nextInt(max - min + 1) + min
-        setOperand1(new Random().nextInt(100 - 1 + 1) + 1);
-        setOperand2(new Random().nextInt(100 - 1 + 1) + 1);
+        final int minNumber = 1;
+        final int maxNumber = 10;
+
+        setOperand1(getRandomNumberBetween(minNumber, maxNumber));
+        setOperand2(getRandomNumberBetween(minNumber, maxNumber));
 
         return getOperand1() + " " + getOperand2();
     }
