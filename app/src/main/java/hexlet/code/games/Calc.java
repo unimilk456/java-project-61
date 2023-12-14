@@ -9,6 +9,22 @@ public class Calc {
     private static Integer operand2;
     private static String operation;
 
+    public static Integer getOperand1() {
+        return operand1;
+    }
+
+    public static void setOperand1(Integer operand1) {
+        Calc.operand1 = operand1;
+    }
+
+    public static String getOperation() {
+        return operation;
+    }
+
+    public static void setOperation(String operation) {
+        Calc.operation = operation;
+    }
+
     private static final String TASK_DESCRIPTION = "What is the result of the expression?";
 
     public static void generateQuestionsAndAnswersCalcGame() {
@@ -24,37 +40,46 @@ public class Calc {
 
     private static String generateQuestion() {
 
-        operand1 = new Random().nextInt(10 + 1);
-        operand2 = new Random().nextInt(10 + 1);
+        setOperand1(new Random().nextInt(10 + 1));
+        setOperand2(new Random().nextInt(10 + 1));
         switch (new Random().nextInt(3 - 1 + 1) + 1) {
             case 1:
-                operation = "+";
+                setOperation("+");
                 break;
             case 2:
-                operation = "-";
+                setOperation("-");
                 break;
             case 3:
-                operation = "*";
+                setOperation("*");
                 break;
             default:
         }
-        return operand1 + " " + operation + " " + operand2;
+        return getOperand1() + " " + getOperation() + " " + getOperand2();
     }
 
     private static String generateAnswer() {
         int answer = 0;
-        switch (operation) {
+        switch (getOperation()) {
             case "+":
-                answer = operand1 + operand2;
+                answer = getOperand1() + getOperand2();
                 break;
             case "-":
-                answer = operand1 - operand2;
+                answer = getOperand1() - getOperand2();
                 break;
             case "*":
-                answer = operand1 * operand2;
+                answer = getOperand1() * getOperand2();
                 break;
             default:
         }
         return String.valueOf(answer);
     }
+
+    public static Integer getOperand2() {
+        return operand2;
+    }
+
+    public static void setOperand2(Integer operand2) {
+        Calc.operand2 = operand2;
+    }
 }
+

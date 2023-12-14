@@ -6,7 +6,7 @@ public class Even {
 
     private static final String TASK_DESCRIPTION = "Answer 'yes' if number is even otherwise 'no'.";
 
-    public static void runEvenGame() {
+    public static void generateQuestionsAndAnswersEven() {
 
         String[][] questionsAndAnswers = new String[3][2];
 
