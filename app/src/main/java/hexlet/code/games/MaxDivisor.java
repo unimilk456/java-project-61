@@ -1,8 +1,10 @@
 package hexlet.code.games;
 
-import java.util.Random;
-
+import static hexlet.code.Engine.getRandomNumberBetween;
 import static hexlet.code.Engine.runGame;
+import static hexlet.code.Engine.COUNT_QUESTIONS;
+import static hexlet.code.Engine.OPTIONS_SIZE;
+
 
 public class MaxDivisor {
     private static final String TASK_DESCRIPTION = "Find the greatest common divisor of given numbers.";
@@ -14,31 +16,32 @@ public class MaxDivisor {
         return operand1;
     }
 
-    public static void setOperand1(Integer operand1) {
-        MaxDivisor.operand1 = operand1;
+    public static void setOperand1(Integer operand) {
+        MaxDivisor.operand1 = operand;
     }
 
     public static Integer getOperand2() {
         return operand2;
     }
 
-    public static void setOperand2(Integer operand2) {
-        MaxDivisor.operand2 = operand2;
+    public static void setOperand2(Integer operand) {
+        MaxDivisor.operand2 = operand;
     }
     public static void generateQuestionsAndAnswersMaxDivisor() {
+        String[][] questionsAndAnswers = new String[COUNT_QUESTIONS][OPTIONS_SIZE];
 
-        String[][] questionsAndAnswers = new String[3][2];
-
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < questionsAndAnswers.length; i++) {
             questionsAndAnswers[i][0] = generateQuestion();
             questionsAndAnswers[i][1] = generateAnswer();
         }
         runGame(TASK_DESCRIPTION, questionsAndAnswers);
     }
     private static String generateQuestion() {
-//        random.nextInt(max - min + 1) + min
-        setOperand1(new Random().nextInt(100 - 1 + 1) + 1);
-        setOperand2(new Random().nextInt(100 - 1 + 1) + 1);
+        final int minNumber = 1;
+        final int maxNumber = 10;
+
+        setOperand1(getRandomNumberBetween(minNumber, maxNumber));
+        setOperand2(getRandomNumberBetween(minNumber, maxNumber));
 
         return getOperand1() + " " + getOperand2();
     }

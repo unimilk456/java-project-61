@@ -1,24 +1,35 @@
 package hexlet.code;
 
+import java.util.Random;
 import java.util.Scanner;
 
 import static hexlet.code.Cli.greetUser;
 
 public class Engine {
-    static boolean isCorrectResponse = true;
+    private static boolean isCorrectResponse = true;
+
+    public static final int COUNT_QUESTIONS = 3;
+    public static final int OPTIONS_SIZE = 3;
+    public static boolean isIsCorrectResponse() {
+        return isCorrectResponse;
+    }
+
+    public static void setIsCorrectResponse(boolean isCorrectResp) {
+        Engine.isCorrectResponse = isCorrectResp;
+    }
 
     public static void runGame(String taskDescription, String[][] questionsAndCorrectAnswers) {
 
         greetUser();
         showTaskDescription(taskDescription);
 
-        for (int i = 0; isCorrectResponse && i < questionsAndCorrectAnswers.length; i++) {
+        for (int i = 0; isIsCorrectResponse() && i < questionsAndCorrectAnswers.length; i++) {
             String question = questionsAndCorrectAnswers[i][0];
             String correctAnswer = questionsAndCorrectAnswers[i][1];
 
             String answer = askQuestion(question);
-            isCorrectResponse = isResponseCorrect(answer, correctAnswer);
-            if (!isCorrectResponse) {
+            setIsCorrectResponse(isResponseCorrect(answer, correctAnswer));
+            if (!isIsCorrectResponse()) {
                 System.out.print(generateMessageWrongAnswer(answer, correctAnswer));
                 break;
             }
@@ -51,6 +62,10 @@ public class Engine {
     }
 
     public static void congratulate() {
-        System.out.println("Congratulations, " + Cli.getUserName());
+        System.out.println("Congratulations, " + Cli.getUserName() + "!");
+    }
+
+    public static int getRandomNumberBetween(int minNumber, int maxNumber) {
+        return new Random().nextInt(maxNumber - minNumber + 1) + minNumber;
     }
 }
