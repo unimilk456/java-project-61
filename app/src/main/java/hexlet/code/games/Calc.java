@@ -11,13 +11,13 @@ public class Calc {
 
     private static final String TASK_DESCRIPTION = "What is the result of the expression?";
 
-    public static void generateQuestionsAndAnswers() {
+    public static void generateQuestionsAndAnswersCalcGame() {
 
-        String[][] questionsAndAnswers = new String [3][2];
+        String[][] questionsAndAnswers = new String[3][2];
 
         for (int i = 0; i < 3; i++) {
             questionsAndAnswers[i][0] = generateQuestion();
-            questionsAndAnswers[i][1] = generateAnswer(operand1, operand2, operation);
+            questionsAndAnswers[i][1] = generateAnswer();
         }
         runGame(TASK_DESCRIPTION, questionsAndAnswers);
     }
@@ -40,7 +40,8 @@ public class Calc {
         }
         return operand1 + " " + operation + " " + operand2;
     }
-    private static String generateAnswer(Integer operand1, Integer operand2, String operation) {
+
+    private static String generateAnswer() {
         int answer = 0;
         switch (operation) {
             case "+":

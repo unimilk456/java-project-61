@@ -8,7 +8,7 @@ public class Even {
 
     public static void runEvenGame() {
 
-        String[][] questionsAndAnswers = new String [3][2];
+        String[][] questionsAndAnswers = new String[3][2];
 
         for (int i = 0; i < 3; i++) {
             questionsAndAnswers[i][0] = getQuestion();
@@ -18,10 +18,11 @@ public class Even {
     }
 
     private static String getQuestion() {
-        return String.valueOf((int)(Math.floor(Math.random() * 100) + 1));
+        return String.valueOf((int) (Math.floor(Math.random() * 100) + 1));
     }
+
     private static String getAnswer(String question) {
-        return (Integer.parseInt(question) % 2 == 0)?"yes":"no";
+        return (Integer.parseInt(question) % 2 == 0) ? "yes" : "no";
     }
 }
 

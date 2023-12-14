@@ -2,8 +2,9 @@ package hexlet.code;
 
 import java.util.Scanner;
 import static hexlet.code.Cli.greetUser;
-import static hexlet.code.games.Calc.generateQuestionsAndAnswers;
+import static hexlet.code.games.Calc.generateQuestionsAndAnswersCalcGame;
 import static hexlet.code.games.Even.runEvenGame;
+import static hexlet.code.games.MaxDivisor.generateQuestionsAndAnswersMaxDivisor;
 
 public class App {
     public static void main(String[] args) {
@@ -12,6 +13,7 @@ public class App {
                 1 - Greet
                 2 - Even
                 3 - Calc
+                4 - GCD
                 0 - Exit
                 Your choice:""");
         Scanner scanner = new Scanner(System.in);
@@ -27,7 +29,10 @@ public class App {
                 runEvenGame();
                 break;
             case 3:
-                generateQuestionsAndAnswers();
+                generateQuestionsAndAnswersCalcGame();
+                break;
+            case 4:
+                generateQuestionsAndAnswersMaxDivisor();
                 break;
             default:
         }

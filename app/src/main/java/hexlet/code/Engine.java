@@ -28,18 +28,22 @@ public class Engine {
             }
         }
     }
+
     private static void showTaskDescription(String description) {
         System.out.println(description);
     }
+
     private static String askQuestion(String question) {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Question: " + question + "\n"
                 + "Your answer: ");
         return scanner.next().trim();
     }
+
     public static boolean isResponseCorrect(String usersAnswer, String correctAnswer) {
         return usersAnswer.equals(correctAnswer);
     }
+
     public static String generateMessageWrongAnswer(String usersAnswer, String correctAnswer) {
         return "'" + usersAnswer + "' is wrong answer ;(. Correct answer was '"
                 + correctAnswer + "'.\n"
