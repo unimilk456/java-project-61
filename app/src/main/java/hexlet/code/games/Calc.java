@@ -10,22 +10,6 @@ public class Calc {
     private static Integer operand2;
     private static String operation;
 
-    public static Integer getOperand1() {
-        return operand1;
-    }
-
-    public static void setOperand1(Integer operand) {
-        Calc.operand1 = operand;
-    }
-
-    public static String getOperation() {
-        return operation;
-    }
-
-    public static void setOperation(String operationType) {
-        Calc.operation = operationType;
-    }
-
     private static final String TASK_DESCRIPTION = "What is the result of the expression?";
 
     public static void generateQuestionsAndAnswersCalcGame() {
@@ -48,49 +32,38 @@ public class Calc {
         final int subtraction = 2;
         final int multiplication = 3;
 
-
-
-
-        setOperand1(getRandomNumberBetween(minValueOperand, maxValueOperand));
-        setOperand2(getRandomNumberBetween(minValueOperand, maxValueOperand));
+        operand1 = getRandomNumberBetween(minValueOperand, maxValueOperand);
+        operand2 = getRandomNumberBetween(minValueOperand, maxValueOperand);
         switch (getRandomNumberBetween(minValueOperand, maxValueOperation)) {
             case addition:
-                setOperation("+");
+                operation = "+";
                 break;
             case subtraction:
-                setOperation("-");
+                operation = "-";
                 break;
             case multiplication:
-                setOperation("*");
+                operation = "*";
                 break;
             default:
         }
-        return getOperand1() + " " + getOperation() + " " + getOperand2();
+        return operand1 + " " + operation + " " + operand2;
     }
 
     private static String generateAnswer() {
         int answer = 0;
-        switch (getOperation()) {
+        switch (operation) {
             case "+":
-                answer = getOperand1() + getOperand2();
+                answer = operand1 + operand2;
                 break;
             case "-":
-                answer = getOperand1() - getOperand2();
+                answer = operand1 - operand2;
                 break;
             case "*":
-                answer = getOperand1() * getOperand2();
+                answer = operand1 * operand2;
                 break;
             default:
         }
         return String.valueOf(answer);
-    }
-
-    public static Integer getOperand2() {
-        return operand2;
-    }
-
-    public static void setOperand2(Integer operand) {
-        Calc.operand2 = operand;
     }
 }
 

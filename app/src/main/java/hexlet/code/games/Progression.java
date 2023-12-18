@@ -8,22 +8,13 @@ import static hexlet.code.Engine.runGame;
 public class Progression {
     private static final String TASK_DESCRIPTION = "What number is missing in the progression?";
     private static String answer;
-
-
-    public static String getAnswer() {
-        return answer;
-    }
-
-    public static void setAnswer(String userAnswer) {
-        Progression.answer = userAnswer;
-    }
     public static void generateQuestionsAndAnswersProgression() {
 
         String[][] questionsAndAnswers = new String[COUNT_QUESTIONS][OPTIONS_SIZE];
 
         for (int i = 0; i < questionsAndAnswers.length; i++) {
             questionsAndAnswers[i][0] = generateQuestion();
-            questionsAndAnswers[i][1] = getAnswer();
+            questionsAndAnswers[i][1] = answer;
         }
         runGame(TASK_DESCRIPTION, questionsAndAnswers);
     }
@@ -49,7 +40,7 @@ public class Progression {
             if (i == (positionForEllipses - 1)) {
                 result.append(".. ");
                 startNumber += increment;
-                setAnswer(String.valueOf(startNumber));
+                answer = String.valueOf(startNumber);
                 continue;
             }
             startNumber += increment;

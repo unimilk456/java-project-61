@@ -10,14 +10,6 @@ public class Prime {
     private static final String TASK_DESCRIPTION = "Answer 'yes' if given number is prime. Otherwise answer 'no'.";
     private static Integer operand1;
 
-    public static Integer getOperand1() {
-        return operand1;
-    }
-
-    public static void setOperand1(Integer operand) {
-        Prime.operand1 = operand;
-    }
-
     public static void generateQuestionsAndAnswersPrime() {
 
         String[][] questionsAndAnswers = new String[COUNT_QUESTIONS][OPTIONS_SIZE];
@@ -33,14 +25,14 @@ public class Prime {
         final int minValueNumber = 1;
         final int maxValueNumber = 100;
 
-        setOperand1(getRandomNumberBetween(minValueNumber, maxValueNumber));
+        operand1 = getRandomNumberBetween(minValueNumber, maxValueNumber);
 
-        return String.valueOf(getOperand1());
+        return String.valueOf(operand1);
     }
     private static String generateAnswer() {
 
-        for (int i = 2; i < getOperand1(); i++) {
-            if (getOperand1() % i == 0) {
+        for (int i = 2; i < operand1; i++) {
+            if (operand1 % i == 0) {
                 return "no";
             }
         }

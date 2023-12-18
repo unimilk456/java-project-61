@@ -10,29 +10,18 @@ public class Engine {
 
     public static final int COUNT_QUESTIONS = 3;
     public static final int OPTIONS_SIZE = 3;
-
-    public static boolean isIsCorrectResponse() {
-        return isCorrectResponse;
-    }
-    public static void setIsCorrectResponse(boolean isCorrectResp) {
-        Engine.isCorrectResponse = isCorrectResp;
-    }
-
-    public static void setUserName(String name) {
-        userName = name;
-    }
     public static void runGame(String taskDescription, String[][] questionsAndCorrectAnswers) {
 
         greetUser();
         showTaskDescription(taskDescription);
 
-        for (int i = 0; isIsCorrectResponse() && i < questionsAndCorrectAnswers.length; i++) {
+        for (int i = 0; isCorrectResponse && i < questionsAndCorrectAnswers.length; i++) {
             String question = questionsAndCorrectAnswers[i][0];
             String correctAnswer = questionsAndCorrectAnswers[i][1];
 
             String answer = askQuestion(question);
-            setIsCorrectResponse(isResponseCorrect(answer, correctAnswer));
-            if (!isIsCorrectResponse()) {
+            isCorrectResponse = isResponseCorrect(answer, correctAnswer);
+            if (!isCorrectResponse) {
                 System.out.print(generateMessageWrongAnswer(answer, correctAnswer));
                 break;
             }
@@ -78,7 +67,7 @@ public class Engine {
                 + "May I have your name? ");
 
         String name = scanner.next().trim();
-        setUserName(name);
+        userName = name;
 
         System.out.println("Hello, " + name + "!");
     }

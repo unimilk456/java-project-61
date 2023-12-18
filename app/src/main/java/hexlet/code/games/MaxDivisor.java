@@ -10,23 +10,6 @@ public class MaxDivisor {
     private static final String TASK_DESCRIPTION = "Find the greatest common divisor of given numbers.";
     private static Integer operand1;
     private static Integer operand2;
-
-
-    public static Integer getOperand1() {
-        return operand1;
-    }
-
-    public static void setOperand1(Integer operand) {
-        MaxDivisor.operand1 = operand;
-    }
-
-    public static Integer getOperand2() {
-        return operand2;
-    }
-
-    public static void setOperand2(Integer operand) {
-        MaxDivisor.operand2 = operand;
-    }
     public static void generateQuestionsAndAnswersMaxDivisor() {
         String[][] questionsAndAnswers = new String[COUNT_QUESTIONS][OPTIONS_SIZE];
 
@@ -40,16 +23,16 @@ public class MaxDivisor {
         final int minNumber = 1;
         final int maxNumber = 10;
 
-        setOperand1(getRandomNumberBetween(minNumber, maxNumber));
-        setOperand2(getRandomNumberBetween(minNumber, maxNumber));
+        operand1 = getRandomNumberBetween(minNumber, maxNumber);
+        operand2 = getRandomNumberBetween(minNumber, maxNumber);
 
-        return getOperand1() + " " + getOperand2();
+        return operand1 + " " + operand2;
     }
     private static String generateAnswer() {
         int maxDivisor = 1;
-        int counter = Math.min(getOperand1(), getOperand2());
+        int counter = Math.min(operand1, operand2);
         for (int i = 2; i <= counter; i++) {
-            if ((getOperand1() % i == 0) && (getOperand2() % i == 0)) {
+            if ((operand1 % i == 0) && (operand2 % i == 0)) {
                 maxDivisor = i;
             }
         }
