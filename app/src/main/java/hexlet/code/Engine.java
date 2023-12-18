@@ -3,21 +3,24 @@ package hexlet.code;
 import java.util.Random;
 import java.util.Scanner;
 
-import static hexlet.code.Cli.greetUser;
 
 public class Engine {
+    private static String userName;
     private static boolean isCorrectResponse = true;
 
     public static final int COUNT_QUESTIONS = 3;
     public static final int OPTIONS_SIZE = 3;
+
     public static boolean isIsCorrectResponse() {
         return isCorrectResponse;
     }
-
     public static void setIsCorrectResponse(boolean isCorrectResp) {
         Engine.isCorrectResponse = isCorrectResp;
     }
 
+    public static void setUserName(String name) {
+        userName = name;
+    }
     public static void runGame(String taskDescription, String[][] questionsAndCorrectAnswers) {
 
         greetUser();
@@ -58,14 +61,25 @@ public class Engine {
     public static String generateMessageWrongAnswer(String usersAnswer, String correctAnswer) {
         return "'" + usersAnswer + "' is wrong answer ;(. Correct answer was '"
                 + correctAnswer + "'.\n"
-                + "Let's try again, " + Cli.getUserName() + "!";
+                + "Let's try again, " + userName + "!";
     }
 
     public static void congratulate() {
-        System.out.println("Congratulations, " + Cli.getUserName() + "!");
+        System.out.println("Congratulations, " + userName + "!");
     }
 
     public static int getRandomNumberBetween(int minNumber, int maxNumber) {
         return new Random().nextInt(maxNumber - minNumber + 1) + minNumber;
+    }
+    public static void greetUser() {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Welcome to the Brain Games! \n"
+                + "May I have your name? ");
+
+        String name = scanner.next().trim();
+        setUserName(name);
+
+        System.out.println("Hello, " + name + "!");
     }
 }

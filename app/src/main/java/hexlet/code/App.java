@@ -1,7 +1,8 @@
 package hexlet.code;
 
 import java.util.Scanner;
-import static hexlet.code.Cli.greetUser;
+
+import static hexlet.code.Engine.greetUser;
 import static hexlet.code.games.Calc.generateQuestionsAndAnswersCalcGame;
 import static hexlet.code.games.Even.generateQuestionsAndAnswersEven;
 import static hexlet.code.games.MaxDivisor.generateQuestionsAndAnswersMaxDivisor;
