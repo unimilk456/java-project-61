@@ -9,6 +9,9 @@ public class Calc {
     private static Integer operand1;
     private static Integer operand2;
     private static String operation;
+    private static final Integer MIN_VALUE_OPERAND = 1;
+    private static final Integer MAX_VALUE_OPERAND = 10;
+    private static final Integer MAX_VALUE_OPERATION = 3;
 
     private static final String TASK_DESCRIPTION = "What is the result of the expression?";
 
@@ -24,17 +27,14 @@ public class Calc {
     }
 
     private static String generateQuestion() {
-        final int minValueOperand = 1;
-        final int maxValueOperand = 10;
-        final int maxValueOperation = 3;
-
         final int addition = 1;
         final int subtraction = 2;
         final int multiplication = 3;
 
-        operand1 = getRandomNumberBetween(minValueOperand, maxValueOperand);
-        operand2 = getRandomNumberBetween(minValueOperand, maxValueOperand);
-        switch (getRandomNumberBetween(minValueOperand, maxValueOperation)) {
+        operand1 = getRandomNumberBetween(MIN_VALUE_OPERAND, MAX_VALUE_OPERAND);
+        operand2 = getRandomNumberBetween(MIN_VALUE_OPERAND, MAX_VALUE_OPERAND);
+
+        switch (getRandomNumberBetween(MIN_VALUE_OPERAND, MAX_VALUE_OPERATION)) {
             case addition:
                 operation = "+";
                 break;

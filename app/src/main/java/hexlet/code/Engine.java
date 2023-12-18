@@ -13,48 +13,34 @@ public class Engine {
     public static void runGame(String taskDescription, String[][] questionsAndCorrectAnswers) {
 
         greetUser();
-        showTaskDescription(taskDescription);
+        System.out.println(taskDescription);
 
         for (int i = 0; isCorrectResponse && i < questionsAndCorrectAnswers.length; i++) {
             String question = questionsAndCorrectAnswers[i][0];
             String correctAnswer = questionsAndCorrectAnswers[i][1];
 
-            String answer = askQuestion(question);
-            isCorrectResponse = isResponseCorrect(answer, correctAnswer);
+            Scanner scanner = new Scanner(System.in);
+            System.out.print("Question: " + question + "\n"
+                    + "Your answer: ");
+            String answer = scanner.next().trim();
+
+            isCorrectResponse = answer.equals(correctAnswer);
+
             if (!isCorrectResponse) {
                 System.out.print(generateMessageWrongAnswer(answer, correctAnswer));
                 break;
             }
             System.out.println("Correct!");
             if (i == 2) {
-                congratulate();
+                System.out.println("Congratulations, " + userName + "!");
             }
         }
-    }
-
-    private static void showTaskDescription(String description) {
-        System.out.println(description);
-    }
-
-    private static String askQuestion(String question) {
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("Question: " + question + "\n"
-                + "Your answer: ");
-        return scanner.next().trim();
-    }
-
-    public static boolean isResponseCorrect(String usersAnswer, String correctAnswer) {
-        return usersAnswer.equals(correctAnswer);
     }
 
     public static String generateMessageWrongAnswer(String usersAnswer, String correctAnswer) {
         return "'" + usersAnswer + "' is wrong answer ;(. Correct answer was '"
                 + correctAnswer + "'.\n"
                 + "Let's try again, " + userName + "!";
-    }
-
-    public static void congratulate() {
-        System.out.println("Congratulations, " + userName + "!");
     }
 
     public static int getRandomNumberBetween(int minNumber, int maxNumber) {
