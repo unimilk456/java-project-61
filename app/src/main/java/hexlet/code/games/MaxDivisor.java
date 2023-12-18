@@ -15,7 +15,7 @@ public class MaxDivisor {
 
         for (int i = 0; i < questionsAndAnswers.length; i++) {
             questionsAndAnswers[i][0] = generateQuestion();
-            questionsAndAnswers[i][1] = generateAnswer();
+            questionsAndAnswers[i][1] = String.valueOf(generateAnswer());
         }
         runGame(TASK_DESCRIPTION, questionsAndAnswers);
     }
@@ -28,7 +28,7 @@ public class MaxDivisor {
 
         return operand1 + " " + operand2;
     }
-    private static String generateAnswer() {
+    private static int generateAnswer() {
         int maxDivisor = 1;
         int counter = Math.min(operand1, operand2);
         for (int i = 2; i <= counter; i++) {
@@ -36,6 +36,6 @@ public class MaxDivisor {
                 maxDivisor = i;
             }
         }
-        return String.valueOf(maxDivisor);
+        return maxDivisor;
     }
 }

@@ -18,7 +18,7 @@ public class Calc {
 
         for (int i = 0; i < questionsAndAnswers.length; i++) {
             questionsAndAnswers[i][0] = generateQuestion();
-            questionsAndAnswers[i][1] = generateAnswer();
+            questionsAndAnswers[i][1] = String.valueOf(generateAnswer());
         }
         runGame(TASK_DESCRIPTION, questionsAndAnswers);
     }
@@ -49,7 +49,7 @@ public class Calc {
         return operand1 + " " + operation + " " + operand2;
     }
 
-    private static String generateAnswer() {
+    private static int generateAnswer() {
         int answer = 0;
         switch (operation) {
             case "+":
@@ -63,7 +63,7 @@ public class Calc {
                 break;
             default:
         }
-        return String.valueOf(answer);
+        return answer;
     }
 }
 
