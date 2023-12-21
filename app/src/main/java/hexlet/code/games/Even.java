@@ -16,8 +16,9 @@ public class Even {
 
         String[][] questionsAndAnswers = new String[COUNT_QUESTIONS][OPTIONS_SIZE];
         for (int i = 0; i < questionsAndAnswers.length; i++) {
+
             questionsAndAnswers[i][0] = String.valueOf(getQuestion(MIN_NUMBER, MAX_NUMBER));
-            questionsAndAnswers[i][1] = getAnswer(questionsAndAnswers[i][0]);
+            questionsAndAnswers[i][1] = getAnswer(questionsAndAnswers[i][0])?"yes":"no";
         }
         runGame(TASK_DESCRIPTION, questionsAndAnswers);
     }
@@ -26,8 +27,8 @@ public class Even {
         return getRandomNumberBetween(minNumber, maxNumber);
     }
 
-    private static String getAnswer(String question) {
-        return (Integer.parseInt(question) % 2 == 0) ? "yes" : "no";
+    private static boolean getAnswer(String question) {
+        return Integer.parseInt(question) % 2 == 0;
     }
 }
 
