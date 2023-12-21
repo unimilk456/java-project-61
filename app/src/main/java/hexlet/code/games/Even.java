@@ -18,7 +18,7 @@ public class Even {
         for (int i = 0; i < questionsAndAnswers.length; i++) {
 
             questionsAndAnswers[i][0] = String.valueOf(getQuestion(MIN_NUMBER, MAX_NUMBER));
-            questionsAndAnswers[i][1] = getAnswer(questionsAndAnswers[i][0])?"yes":"no";
+            questionsAndAnswers[i][1] = getAnswer(questionsAndAnswers[i][0]) ? "yes" : "no";
         }
         runGame(TASK_DESCRIPTION, questionsAndAnswers);
     }

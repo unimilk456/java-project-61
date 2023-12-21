@@ -18,7 +18,7 @@ public class Prime {
         for (int i = 0; i < questionsAndAnswers.length; i++) {
             int operand = getRandomNumberBetween(minValueNumber, maxValueNumber);
             questionsAndAnswers[i][0] = String.valueOf(operand);
-            questionsAndAnswers[i][1] = generateAnswer(operand)?"yes":"no";
+            questionsAndAnswers[i][1] = generateAnswer(operand) ? "yes" : "no";
         }
         runGame(TASK_DESCRIPTION, questionsAndAnswers);
     }
@@ -26,7 +26,9 @@ public class Prime {
     private static boolean generateAnswer(int operand) {
 
         for (int i = 2; i < operand; i++) {
-            return !(operand % i == 0);
+            if (operand % i == 0) {
+                return false;
+            }
         }
         return true;
     }

@@ -30,12 +30,15 @@ public class Progression {
             int startNumber = getRandomNumberBetween(MIN_START_NUMBER_PROGRESSION, MAX_START_NUMBER_PROGRESSION);
             int increment = getRandomNumberBetween(MIN_INCREMENT, MAX_INCREMENT);
 
-            questionsAndAnswers[i][0] = generateQuestions(startNumber, increment, positionForEllipses, countNumberInProgression);
+            questionsAndAnswers[i][0] = generateQuestions(startNumber, increment,
+                    positionForEllipses, countNumberInProgression);
             questionsAndAnswers[i][1] = answer;
         }
         runGame(TASK_DESCRIPTION, questionsAndAnswers);
     }
-    public static String generateQuestions(int startNumber, int increment, int positionForEllipses, int countNumberInProgression) {
+
+    public static String generateQuestions(int startNumber, int increment,
+                                           int positionForEllipses, int countNumberInProgression) {
 
         int[] progression = generateProgression(startNumber, increment, countNumberInProgression);
         answer = String.valueOf(progression[positionForEllipses - 1]);
@@ -50,6 +53,7 @@ public class Progression {
         }
         return progressionAsString.toString();
     }
+
     public static int[] generateProgression(int startNumber, int increment, int countNumberInProgression) {
         int[] progression = new int[countNumberInProgression];
         progression[0] = startNumber;
