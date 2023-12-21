@@ -17,14 +17,10 @@ public class Even {
         String[][] questionsAndAnswers = new String[COUNT_QUESTIONS][OPTIONS_SIZE];
         for (int i = 0; i < questionsAndAnswers.length; i++) {
 
-            questionsAndAnswers[i][0] = String.valueOf(getQuestion(MIN_NUMBER, MAX_NUMBER));
+            questionsAndAnswers[i][0] = String.valueOf(getRandomNumberBetween(MIN_NUMBER, MAX_NUMBER));
             questionsAndAnswers[i][1] = getAnswer(questionsAndAnswers[i][0]) ? "yes" : "no";
         }
         runGame(TASK_DESCRIPTION, questionsAndAnswers);
-    }
-
-    private static int getQuestion(int minNumber, int maxNumber) {
-        return getRandomNumberBetween(minNumber, maxNumber);
     }
 
     private static boolean getAnswer(String question) {
