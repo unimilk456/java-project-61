@@ -7,6 +7,8 @@ import static hexlet.code.Engine.getRandomNumberBetween;
 import static hexlet.code.Engine.runGame;
 
 public class Even {
+    private static final int MIN_NUMBER = 0;
+    private static final int MAX_NUMBER = 100;
 
     private static final String TASK_DESCRIPTION = "Answer 'yes' if the number is even, otherwise answer 'no'.";
 
@@ -14,16 +16,14 @@ public class Even {
 
         String[][] questionsAndAnswers = new String[COUNT_QUESTIONS][OPTIONS_SIZE];
         for (int i = 0; i < questionsAndAnswers.length; i++) {
-            questionsAndAnswers[i][0] = getQuestion();
+            questionsAndAnswers[i][0] = String.valueOf(getQuestion(MIN_NUMBER, MAX_NUMBER));
             questionsAndAnswers[i][1] = getAnswer(questionsAndAnswers[i][0]);
         }
         runGame(TASK_DESCRIPTION, questionsAndAnswers);
     }
 
-    private static String getQuestion() {
-        final int minNumber = 1;
-        final int maxNumber = 100;
-        return String.valueOf(getRandomNumberBetween(minNumber, maxNumber));
+    private static int getQuestion(int minNumber, int maxNumber) {
+        return getRandomNumberBetween(minNumber, maxNumber);
     }
 
     private static String getAnswer(String question) {

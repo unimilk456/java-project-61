@@ -8,31 +8,25 @@ import static hexlet.code.Engine.runGame;
 
 public class Prime {
     private static final String TASK_DESCRIPTION = "Answer 'yes' if given number is prime. Otherwise answer 'no'.";
-    private static Integer operand1;
 
     public static void generateQuestionsAndAnswersPrime() {
+        final int minValueNumber = 1;
+        final int maxValueNumber = 100;
 
         String[][] questionsAndAnswers = new String[COUNT_QUESTIONS][OPTIONS_SIZE];
 
         for (int i = 0; i < questionsAndAnswers.length; i++) {
-            questionsAndAnswers[i][0] = generateQuestion();
-            questionsAndAnswers[i][1] = generateAnswer();
+            int operand = getRandomNumberBetween(minValueNumber, maxValueNumber);
+            questionsAndAnswers[i][0] = String.valueOf(operand);
+            questionsAndAnswers[i][1] = generateAnswer(operand);
         }
         runGame(TASK_DESCRIPTION, questionsAndAnswers);
     }
 
-    private static String generateQuestion() {
-        final int minValueNumber = 1;
-        final int maxValueNumber = 100;
+    private static String generateAnswer(int operand) {
 
-        operand1 = getRandomNumberBetween(minValueNumber, maxValueNumber);
-
-        return String.valueOf(operand1);
-    }
-    private static String generateAnswer() {
-
-        for (int i = 2; i < operand1; i++) {
-            if (operand1 % i == 0) {
+        for (int i = 2; i < operand; i++) {
+            if (operand % i == 0) {
                 return "no";
             }
         }

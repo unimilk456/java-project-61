@@ -8,27 +8,23 @@ import static hexlet.code.Engine.OPTIONS_SIZE;
 
 public class MaxDivisor {
     private static final String TASK_DESCRIPTION = "Find the greatest common divisor of given numbers.";
-    private static Integer operand1;
-    private static Integer operand2;
     public static void generateQuestionsAndAnswersMaxDivisor() {
-        String[][] questionsAndAnswers = new String[COUNT_QUESTIONS][OPTIONS_SIZE];
-
-        for (int i = 0; i < questionsAndAnswers.length; i++) {
-            questionsAndAnswers[i][0] = generateQuestion();
-            questionsAndAnswers[i][1] = String.valueOf(generateAnswer());
-        }
-        runGame(TASK_DESCRIPTION, questionsAndAnswers);
-    }
-    private static String generateQuestion() {
         final int minNumber = 1;
         final int maxNumber = 10;
 
-        operand1 = getRandomNumberBetween(minNumber, maxNumber);
-        operand2 = getRandomNumberBetween(minNumber, maxNumber);
+        String[][] questionsAndAnswers = new String[COUNT_QUESTIONS][OPTIONS_SIZE];
 
-        return operand1 + " " + operand2;
+        for (int i = 0; i < questionsAndAnswers.length; i++) {
+            int operand1 = getRandomNumberBetween(minNumber, maxNumber);
+            int operand2 = getRandomNumberBetween(minNumber, maxNumber);
+
+            questionsAndAnswers[i][0] = operand1 + " " + operand2;
+            questionsAndAnswers[i][1] = String.valueOf(generateAnswer(operand1, operand2));
+        }
+        runGame(TASK_DESCRIPTION, questionsAndAnswers);
     }
-    private static int generateAnswer() {
+
+    private static int generateAnswer(int operand1, int operand2) {
         int maxDivisor = 1;
         int counter = Math.min(operand1, operand2);
         for (int i = 2; i <= counter; i++) {
