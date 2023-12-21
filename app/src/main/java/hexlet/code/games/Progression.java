@@ -7,45 +7,56 @@ import static hexlet.code.Engine.runGame;
 
 public class Progression {
     private static final String TASK_DESCRIPTION = "What number is missing in the progression?";
+    private static final int MAX_NUMBER_IN_PROGRESSION = 10;
+    private static final int MIN_NUMBER_IN_PROGRESSION = 5;
+
+    private static final int MIN_POSITION_FOR_ELLIPSES = 2;
+
+    private static final int MIN_START_NUMBER_PROGRESSION = 1;
+    private static final int MAX_START_NUMBER_PROGRESSION = 20;
+
+    private static final int MIN_INCREMENT = 1;
+    private static final int MAX_INCREMENT = 20;
     private static String answer;
+
     public static void generateQuestionsAndAnswersProgression() {
 
         String[][] questionsAndAnswers = new String[COUNT_QUESTIONS][OPTIONS_SIZE];
 
+
         for (int i = 0; i < questionsAndAnswers.length; i++) {
-            questionsAndAnswers[i][0] = generateQuestion();
+            int countNumberInProgression = getRandomNumberBetween(MIN_NUMBER_IN_PROGRESSION, MAX_NUMBER_IN_PROGRESSION);
+            int positionForEllipses = getRandomNumberBetween(MIN_POSITION_FOR_ELLIPSES, countNumberInProgression);
+            int startNumber = getRandomNumberBetween(MIN_START_NUMBER_PROGRESSION, MAX_START_NUMBER_PROGRESSION);
+            int increment = getRandomNumberBetween(MIN_INCREMENT, MAX_INCREMENT);
+
+            questionsAndAnswers[i][0] = generateQuestions(startNumber, increment, positionForEllipses, countNumberInProgression);
             questionsAndAnswers[i][1] = answer;
         }
         runGame(TASK_DESCRIPTION, questionsAndAnswers);
     }
-    private static String generateQuestion() {
-        final int maxNumberInProgression = 10;
-        final int minNumberInProgression = 5;
+    public static String generateQuestions(int startNumber, int increment, int positionForEllipses, int countNumberInProgression) {
 
-        final int minPositionForEllipses = 2;
+        int[] progression = generateProgression(startNumber, increment, countNumberInProgression);
+        answer = String.valueOf(progression[positionForEllipses - 1]);
 
-        final int minStartNumberProgression = 1;
-        final int maxStartNumberProgression = 20;
-
-        final int minIncrement = 1;
-        final int maxIncrement = 20;
-
-        int countNumberInProgression = getRandomNumberBetween(minNumberInProgression, maxNumberInProgression);
-        int positionForEllipses = getRandomNumberBetween(minPositionForEllipses, countNumberInProgression);
-        int startNumber = getRandomNumberBetween(minStartNumberProgression, maxStartNumberProgression);
-        int increment = getRandomNumberBetween(minIncrement, maxIncrement);
-
-        StringBuilder result = new StringBuilder(startNumber + " ");
-        for (int i = 1; i <= countNumberInProgression; i++) {
+        StringBuilder progressionAsString = new StringBuilder();
+        for (int i = 0; i < progression.length; i++) {
             if (i == (positionForEllipses - 1)) {
-                result.append(".. ");
-                startNumber += increment;
-                answer = String.valueOf(startNumber);
+                progressionAsString.append(".. ");
                 continue;
             }
-            startNumber += increment;
-            result.append(startNumber).append(" ");
+            progressionAsString.append(progression[i]).append(" ");
         }
-        return result.toString();
+        return progressionAsString.toString();
+    }
+    public static int[] generateProgression(int startNumber, int increment, int countNumberInProgression) {
+        int[] progression = new int[countNumberInProgression];
+        progression[0] = startNumber;
+        for (int i = 1; i < countNumberInProgression; i++) {
+            startNumber += increment;
+            progression[i] = startNumber;
+        }
+        return progression;
     }
 }
