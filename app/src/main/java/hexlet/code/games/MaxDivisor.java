@@ -1,6 +1,6 @@
 package hexlet.code.games;
 
-import static hexlet.code.Engine.getRandomNumberBetween;
+import static hexlet.code.Utils.getRandomNumberBetween;
 import static hexlet.code.Engine.runGame;
 import static hexlet.code.Engine.COUNT_QUESTIONS;
 import static hexlet.code.Engine.OPTIONS_SIZE;

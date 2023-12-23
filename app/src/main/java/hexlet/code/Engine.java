@@ -1,6 +1,5 @@
 package hexlet.code;
 
-import java.util.Random;
 import java.util.Scanner;
 
 
@@ -43,9 +42,6 @@ public class Engine {
                 + "Let's try again, " + userName + "!";
     }
 
-    public static int getRandomNumberBetween(int minNumber, int maxNumber) {
-        return new Random().nextInt(maxNumber - minNumber + 1) + minNumber;
-    }
     public static void greetUser() {
         Scanner scanner = new Scanner(System.in);
 
