@@ -13,12 +13,11 @@ public class Engine {
 
         greetUser();
         System.out.println(taskDescription);
-
+        Scanner scanner = new Scanner(System.in);
         for (int i = 0; isCorrectResponse && i < questionsAndCorrectAnswers.length; i++) {
             String question = questionsAndCorrectAnswers[i][0];
             String correctAnswer = questionsAndCorrectAnswers[i][1];
 
-            Scanner scanner = new Scanner(System.in);
             System.out.print("Question: " + question + "\n"
                     + "Your answer: ");
             String answer = scanner.next().trim();
@@ -34,6 +33,7 @@ public class Engine {
                 System.out.println("Congratulations, " + userName + "!");
             }
         }
+        scanner.close();
     }
 
     public static String generateMessageWrongAnswer(String usersAnswer, String correctAnswer) {
@@ -52,5 +52,6 @@ public class Engine {
         userName = name;
 
         System.out.println("Hello, " + name + "!");
+        scanner.close();
     }
 }
