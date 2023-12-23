@@ -10,7 +10,7 @@ import static hexlet.code.games.Prime.generateQuestionsAndAnswersPrime;
 import static hexlet.code.games.Progression.generateQuestionsAndAnswersProgression;
 
 public class App {
-    public static Scanner scanner;
+    private static Scanner scanner;
     public static void main(String[] args) {
         final int greet = 1;
         final int even = 2;
