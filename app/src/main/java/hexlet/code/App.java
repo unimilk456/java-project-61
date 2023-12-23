@@ -10,6 +10,7 @@ import static hexlet.code.games.Prime.generateQuestionsAndAnswersPrime;
 import static hexlet.code.games.Progression.generateQuestionsAndAnswersProgression;
 
 public class App {
+    public static Scanner scanner;
     public static void main(String[] args) {
         final int greet = 1;
         final int even = 2;
@@ -29,7 +30,7 @@ public class App {
                 6 - Prime
                 0 - Exit
                 Your choice:""");
-        Scanner scanner = new Scanner(System.in);
+        scanner = new Scanner(System.in);
         int gameNumber = scanner.nextInt();
 
         switch (gameNumber) {
@@ -55,8 +56,12 @@ public class App {
                 generateQuestionsAndAnswersPrime();
                 break;
             default:
+                throw new Error("Game with number: " + gameNumber + " doesn't exist!");
         }
         scanner.close();
+    }
+    public static Scanner getScanner() {
+        return scanner;
     }
 
 

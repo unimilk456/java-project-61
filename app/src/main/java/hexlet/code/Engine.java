@@ -2,6 +2,8 @@ package hexlet.code;
 
 import java.util.Scanner;
 
+import static hexlet.code.App.getScanner;
+
 
 public class Engine {
     private static String userName;
@@ -13,7 +15,7 @@ public class Engine {
 
         greetUser();
         System.out.println(taskDescription);
-        Scanner scanner = new Scanner(System.in);
+        Scanner scanner = getScanner();
         for (int i = 0; isCorrectResponse && i < questionsAndCorrectAnswers.length; i++) {
             String question = questionsAndCorrectAnswers[i][0];
             String correctAnswer = questionsAndCorrectAnswers[i][1];
@@ -33,7 +35,6 @@ public class Engine {
                 System.out.println("Congratulations, " + userName + "!");
             }
         }
-        scanner.close();
     }
 
     public static String generateMessageWrongAnswer(String usersAnswer, String correctAnswer) {
@@ -43,7 +44,7 @@ public class Engine {
     }
 
     public static void greetUser() {
-        Scanner scanner = new Scanner(System.in);
+        Scanner scanner = getScanner();
 
         System.out.print("Welcome to the Brain Games! \n"
                 + "May I have your name? ");
@@ -52,6 +53,5 @@ public class Engine {
         userName = name;
 
         System.out.println("Hello, " + name + "!");
-        scanner.close();
     }
 }
